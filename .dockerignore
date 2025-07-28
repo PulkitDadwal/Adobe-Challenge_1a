@@ -1,0 +1,21 @@
+# Ignore Challenge 1b and other directories
+../Challenge 1b/
+Challenge 1b/
+**/Challenge 1b/
+
+# Ignore common files
+*.md
+.git/
+.gitignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.DS_Store
+Thumbs.db
