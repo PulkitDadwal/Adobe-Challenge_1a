@@ -4,9 +4,48 @@
 Available on Docker Hub: `parzivl/pdf-outline-extractor:latest`
 
 ## Quick Start (Using Pre-built Image)
+
+### Step 1: Create directories
+```bash
+mkdir -p input output
+```
+
+### Step 2: Place your PDF files
+Copy your PDF files into the `input` directory:
+```bash
+cp your-file.pdf input/
+```
+
+### Step 3: Run the extractor
+```bash
+docker run --rm -v $(pwd)/input:/app/input -v $(pwd)/output:/app/output --network none parzivl/pdf-outline-extractor:latest
+```
+
+### Step 4: Check results
+Your extracted outlines will be in the `output` directory as JSON files:
+```bash
+ls output/
+# Shows: your-file.json
+```
+
+## Platform-Specific Commands
+
+### Linux/macOS
 ```bash
 mkdir -p input output
 docker run --rm -v $(pwd)/input:/app/input -v $(pwd)/output:/app/output --network none parzivl/pdf-outline-extractor:latest
+```
+
+### Windows PowerShell
+```powershell
+mkdir -p input, output
+docker run --rm -v "${PWD}/input:/app/input" -v "${PWD}/output:/app/output" --network none parzivl/pdf-outline-extractor:latest
+```
+
+### Windows Command Prompt
+```cmd
+mkdir input output
+docker run --rm -v "%cd%/input:/app/input" -v "%cd%/output:/app/output" --network none parzivl/pdf-outline-extractor:latest
 ```
 
 ## Build from Source
@@ -14,12 +53,6 @@ If you want to build locally:
 ```bash
 docker build --platform linux/amd64 -t pdf-outline-extractor:latest .
 docker run --rm -v $(pwd)/input:/app/input -v $(pwd)/output:/app/output --network none pdf-outline-extractor:latest
-```
-
-## For Windows PowerShell
-```powershell
-mkdir -p input, output
-docker run --rm -v "${PWD}/input:/app/input" -v "${PWD}/output:/app/output" --network none parzivl/pdf-outline-extractor:latest
 ```
 
 ## Approach
@@ -89,4 +122,3 @@ docker run --rm -v $(pwd)/input:/app/input -v $(pwd)/output:/app/output --networ
   ]
 }
 ```
-
